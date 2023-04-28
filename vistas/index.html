@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Aplicación de Mensajes</title>
+</head>
+<body>
+  <h1>Aplicación de Mensajes</h1>
+  <form>
+    <label for="mensaje">Mensaje:</label>
+    <input type="text" id="mensaje" name="mensaje">
+    <button type="button" onclick="guardarMensaje()">Guardar Mensaje</button>
+  </form>
+  <br>
+  <h2>Mensajes:</h2>
+  <ul id="mensajes"></ul>
+  <script>
+    async function guardarMensaje() {
+      const mensaje = document.getElementById("mensaje").value;
+      const response = await fetch(`/guardar_mensaje/${mensaje}`, { method: 'POST' });
+      const data = await response.json();
+      console.log(data.message);
+      document.getElementById("mensaje").value = "";
+      obtenerMensajes();
+    }
+    
+    async function obtenerMensajes() {
+      const response = await fetch("/obtener_mensajes");
+      const data = await response.json();
+      console.log(data.mensajes);
+      const listaMensajes = document.getElementById("mensajes");
+      listaMensajes.innerHTML = "";
+      data.mensajes.forEach(mensaje => {
+        const li = document.createElement("li");
+        li.appendChild(document.createTextNode(mensaje));
+        listaMensajes.appendChild(li);
+      });
+    }
+    
+    obtenerMensajes();
+  </script>
+</body>
+</html>

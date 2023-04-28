@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Obtener Mensajes</title>
+    <style>
+        /* Estilos para la tabla */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        /* Estilos para el encabezado */
+        h1 {
+            margin-top: 50px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 36px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Obtener Mensajes</h1>
+    <div id="mensaje-table"></div>
+    <script>
+        // Hacemos una petición GET al endpoint /obtener_mensajes
+        fetch('/obtener_mensajes')
+            .then(response => response.json())
+            .then(data => {
+                // Creamos la tabla y le asignamos los datos obtenidos
+                const table = document.createElement('table');
+                const thead = document.createElement('thead');
+                const trHead = document.createElement('tr');
+                const thId = document.createElement('th');
+                const thFecha = document.createElement('th');
+                const thMensaje = document.createElement('th');
+                thId.textContent = 'ID';
+                thFecha.textContent = 'Fecha';
+                thMensaje.textContent = 'Mensaje';
+                trHead.appendChild(thId);
+                trHead.appendChild(thFecha);
+                trHead.appendChild(thMensaje);
+                thead.appendChild(trHead);
+                table.appendChild(thead);
+                const tbody = document.createElement('tbody');
+                data.mensajes.forEach(mensaje => {
+                    const tr = document.createElement('tr');
+                    const tdId = document.createElement('td');
+                    const tdFecha = document.createElement('td');
+                    const tdMensaje = document.createElement('td');
+                    tdId.textContent = mensaje.id;
+                    tdFecha.textContent = mensaje.fecha;
+                    tdMensaje.textContent = mensaje.mensaje;
+                    tr.appendChild(tdId);
+                    tr.appendChild(tdFecha);
+                    tr.appendChild(tdMensaje);
+                    tbody.appendChild(tr);
+                });
+                table.appendChild(tbody);
+                document.getElementById('mensaje-table').appendChild(table);
+            })
+            .catch(error => console.error(error));
+    </script>
+</body>
+</html>
+
