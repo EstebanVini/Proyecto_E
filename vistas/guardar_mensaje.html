@@ -1,59 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Guardar Mensaje</title>
-	<style type="text/css">
-		.container {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			height: 100vh;
-		}
+  <meta charset="UTF-8">
+  <title>Aplicación de Mensajes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+	/* Estilos para el encabezado */
+	header {
+	background-color: #0d6efd;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	}
 
-		h1 {
-			font-size: 2rem;
-			margin-bottom: 1rem;
-		}
+	header h1 {
+	margin: 0;
+	font-size: 28px;
+	}
 
-		form {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			padding: 1rem;
-			border-radius: 1rem;
-			background-color: #f2f2f2;
-			box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-			max-width: 500px;
-			width: 100%;
-		}
+	/* Estilos para el formulario */
+	form {
+	margin: 150px auto 0;
+	max-width: 500px;
+	padding: 30px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	background-color: #fff;
+	}
 
-		input[type="submit"] {
-			background-color: #4CAF50;
-			color: white;
-			padding: 0.5rem 1rem;
-			border: none;
-			border-radius: 0.5rem;
-			font-size: 1.2rem;
-			margin-top: 1rem;
-			cursor: pointer;
-		}
+	label {
+	display: block;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	color: #0d6efd;
+	}
 
-		input[type="submit"]:hover {
-			background-color: #3e8e41;
-		}
+	input[type="text"] {
+	border: 1px solid #ccc;
+	font-size: 18px;
+	padding: 10px;
+	width: 100%;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	}
+
+	button[type="button"] {
+	background-color: #0d6efd;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 20px;
+	padding: 10px 20px;
+	width: 100%;
+	border-radius: 5px;
+	transition: background-color 0.3s ease-in-out;
+	}
+
+	button[type="button"]:hover {
+	background-color: #1c84ee;
+	}
+
+	/* Estilos para la lista de mensajes */
+	ul {
+	margin-top: 30px;
+	list-style-type: none;
+	padding: 0;
+	max-height: 300px;
+	overflow: auto;
+	border-top: 1px solid #ccc;
+	}
+
+	li {
+	font-size: 18px;
+	line-height: 1.5;
+	padding: 10px;
+	border-bottom: 1px solid #ccc;
+	}
 	</style>
-</head>
-<body>
-	<div class="container">
-		<h1>Mandar Mensaje</h1>
-		<form action="/guardar_mensaje" method="POST">
-			<label for="mensaje">Mensaje:</label>
-			<input type="text" name="mensaje" id="mensaje">
-			<input type="submit" value="Mandar">
-		</form>
-	</div>
-</body>
-</html>
-
+	</head>
+	<body>
+	<header>
+		<h1>Aplicación de Mensajes</h1>
+	</header>
+	<form>
+		<label for="mensaje">Escribir un mensaje:</label>
+		<input type="text" id="mensaje" name="mensaje">
+		<button type="button" onclick="guardarMensaje()">Guardar Mensaje</button>
+	</form>
+	<ul id="listaMensajes">
+	</ul>
+    <script>
+		async function guardarMensaje() {
+		  const mensaje = document.getElementById("mensaje").value;
+		  const options = {
+			method: 'POST',
+			headers: {
+			  'Content-Type': 'application/json',
+			  'Accept': 'application/json'
+			},
+			body: JSON.stringify({ mensaje: mensaje })
+		  };
+		  const response = await fetch('/guardar_mensaje', options);
+		  const data = await response.json();
+		  console.log(data.message);
+		  document.getElementById("mensaje").value = "";
+		  obtenerMensajes();
+		}
+	  </script>
+	</body>
+	</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Buscador de Mensajes</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		/* Estilos para el encabezado */
+		header {
+			background-color: #0d6efd;
+			color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 80px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 999;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		}
+
+		header h1 {
+			margin: 0;
+			font-size: 28px;
+		}
+
+		/* Estilos para el formulario */
+		form {
+			margin: 150px auto 0;
+			max-width: 500px;
+			padding: 30px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+			background-color: #fff;
+		}
+
+		label {
+			display: block;
+			font-size: 20px;
+			font-weight: bold;
+			margin-bottom: 10px;
+			color: #0d6efd;
+		}
+
+		input[type="text"] {
+			border: 1px solid #ccc;
+			font-size: 18px;
+			padding: 10px;
+			width: 100%;
+			margin-bottom: 20px;
+			border-radius: 5px;
+		}
+
+		button[type="button"] {
+			background-color: #0d6efd;
+			border: none;
+			color: #fff;
+			cursor: pointer;
+			font-size: 20px;
+			padding: 10px 20px;
+			width: 100%;
+			border-radius: 5px;
+			transition: background-color 0.3s ease-in-out;
+		}
+
+		button[type="button"]:hover {
+			background-color: #1c84ee;
+		}
+
+		/* Estilos para la tabla de resultados */
+		table {
+			margin-top: 30px;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		th, td {
+			padding: 8px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+
+		th {
+			background-color: #0d6efd;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Buscador de Mensajes</h1>
+	</header>
+	<form>
+		<label for="fecha">Buscar por Fecha:</label>
+		<input type="text" id="fecha" name="fecha">
+		<button type="button" onclick="buscarPorFecha()">Buscar</button>
+
+		<label for="id">Buscar por ID:</label>
+		<input type="text" id="id" name="id">
+		<button type="button" onclick="buscarPorId()">Buscar</button>
+
+		<label for="contenido">Buscar por Contenido:</label>
+		<input type="text" id="contenido" name="contenido">
+        <button type="button" onclick="buscarPorContenido()">Buscar</button>
+    </form>
+    <table id="tablaMensajes">
+    <thead>
+    <tr>
+    <th>ID</th>
+    <th>Contenido</th>
+    <th>Fecha</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+    <script>
+       async function buscarPorFecha() {
+        const fecha = document.getElementById("fecha").value;
+        const response = await fetch(`/obtener_mensaje_por_fecha/${fecha}`);
+        const data = await response.json();
+        console.log(data);
+        if (data.mensaje) {
+            mostrarMensajes([data.mensaje]);
+        } else {
+            mostrarMensajeError(data.message);
+        }
+        }
+
+        async function buscarPorId() {
+        const id = document.getElementById("id").value;
+        const response = await fetch(`/obtener_mensaje_por_id/${id}`);
+        const data = await response.json();
+        console.log(data);
+        if (data.mensaje) {
+            mostrarMensajes([data.mensaje]);
+        } else {
+            mostrarMensajeError(data.message);
+        }
+        }
+
+        async function buscarPorContenido() {
+        const contenido = document.getElementById("contenido").value;
+        const response = await fetch(`/buscar_mensajes_por_contenido/${contenido}`);
+        const data = await response.json();
+        console.log(data);
+        if (data.mensajes) {
+            mostrarMensajes(data.mensajes);
+        } else {
+            mostrarMensajeError(data.message);
+        }
+        }
+
+        function mostrarMensajes(mensajes) {
+        const tbody = document.querySelector("#tablaMensajes tbody");
+        tbody.innerHTML = "";
+        for (const mensaje of mensajes) {
+            const tr = document.createElement("tr");
+            const tdId = document.createElement("td");
+            tdId.textContent = mensaje.id;
+            const tdContenido = document.createElement("td");
+            tdContenido.textContent = mensaje.contenido;
+            const tdFecha = document.createElement("td");
+            tdFecha.textContent = mensaje.fecha;
+            tr.appendChild(tdId);
+            tr.appendChild(tdContenido);
+            tr.appendChild(tdFecha);
+            tbody.appendChild(tr);
+        }
+        }
+
+        function mostrarMensajeError(message) {
+        const tbody = document.querySelector("#tablaMensajes tbody");
+        tbody.innerHTML = `<tr><td colspan="3">${message}</td></tr>`;
+        }
+
+    </script>
+    </body>
+    </html>
