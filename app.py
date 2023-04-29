@@ -4,7 +4,7 @@ import json
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from  utils.backend import guardar_datos, obtener_mensajes, obtener_mensaje_por_fecha, obtener_mensaje_por_id, buscar_mensajes_por_contenido, eliminar_mensaje
+from  utils.backend import guardar_datos, obtener_mensajes, obtener_mensaje_por_fecha_db, obtener_mensaje_por_id_db, buscar_mensajes_por_contenido_db, eliminar_mensaje_db
 
 app = FastAPI()
 
@@ -16,8 +16,8 @@ async def root():
 async def guardar_mensaje():
     return FileResponse("vistas/guardar_mensaje.html")
 
-@app.post("/guardar_mensaje/{mensaje}")
-async def guardar_mensaje(mensaje: str):
+@app.post("/guardar_mensaje")
+async def guardar_mensaje(mensaje: dict):
     mensaje_id = guardar_datos(mensaje)
     return {"message": f"Se ha insertado un mensaje con el ID {mensaje_id}"}
 
@@ -30,9 +30,13 @@ async def obtener_todos_los_mensajes():
     mensajes = obtener_mensajes()
     return {"mensajes": json.loads(mensajes)}
 
-@app.get("/obtener_mensaje_por_fecha/{fecha}")
-async def obtener_mensaje_por_fecha(fecha: str):
-    mensaje = obtener_mensaje_por_fecha(fecha)
+@app.get("/buscar")
+async def buscar_mensaje():
+    return FileResponse("vistas/busquedas.html")
+
+@app.get("/obtener_mensaje_por_fecha")
+async def obtener_mensaje_por_fecha(fecha: dict):
+    mensaje = obtener_mensaje_por_fecha_db(fecha)
     if mensaje:
         return {"mensaje": mensaje}
     else:
@@ -40,24 +44,24 @@ async def obtener_mensaje_por_fecha(fecha: str):
 
 @app.get("/obtener_mensaje_por_id/{id}")
 async def obtener_mensaje_por_id(id: int):
-    mensaje = obtener_mensaje_por_id(id)
+    mensaje = obtener_mensaje_por_id_db(id)
     if mensaje:
         return {"mensaje": mensaje}
     else:
         return {"message": "No se encontró ningún mensaje con ese ID."}
 
-@app.get("/buscar_mensajes_por_contenido/{contenido}")
-async def buscar_mensajes_por_contenido(contenido: str):
-    mensajes = buscar_mensajes_por_contenido(contenido)
+@app.get("/buscar_mensajes_por_contenido")
+async def buscar_mensajes_por_contenido(contenido: dict):
+    mensajes = buscar_mensajes_por_contenido_db(contenido)
     if mensajes:
         return {"mensajes": mensajes}
     else:
         return {"message": "No se encontraron mensajes con ese contenido."}
 
-@app.post("/eliminar_mensaje/{id}")
+@app.delete("/eliminar_mensaje/{id}")
 async def eliminar_mensaje(id: int):
-    mensaje_eliminado = eliminar_mensaje(id)
-    if mensaje_eliminado:
+    if obtener_mensaje_por_id_db(id):
+        eliminar_mensaje_db(id)
         return {"message": f"Se ha eliminado el mensaje con el ID {id}"}
     else:
         return {"message": "No se encontró ningún mensaje con ese ID."}

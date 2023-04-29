@@ -3,6 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <title>Aplicación de Mensajes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      background-color: #0066cc;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    form {
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 400px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    input[type="text"] {
+      border: 1px solid #ccc;
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+    }
+    button[type="button"] {
+      background-color: #0066cc;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 10px;
+      width: 100%;
+    }
+    button[type="button"]:hover {
+      background-color: #0059b3;
+    }
+  </style>
 </head>
 <body>
   <h1>Aplicación de Mensajes</h1>
@@ -12,8 +54,6 @@
     <button type="button" onclick="guardarMensaje()">Guardar Mensaje</button>
   </form>
   <br>
-  <h2>Mensajes:</h2>
-  <ul id="mensajes"></ul>
   <script>
     async function guardarMensaje() {
       const mensaje = document.getElementById("mensaje").value;
@@ -23,21 +63,6 @@
       document.getElementById("mensaje").value = "";
       obtenerMensajes();
     }
-    
-    async function obtenerMensajes() {
-      const response = await fetch("/obtener_mensajes");
-      const data = await response.json();
-      console.log(data.mensajes);
-      const listaMensajes = document.getElementById("mensajes");
-      listaMensajes.innerHTML = "";
-      data.mensajes.forEach(mensaje => {
-        const li = document.createElement("li");
-        li.appendChild(document.createTextNode(mensaje));
-        listaMensajes.appendChild(li);
-      });
-    }
-    
-    obtenerMensajes();
   </script>
 </body>
 </html>
