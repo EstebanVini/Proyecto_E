@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Obtener Mensajes</title>
+    <!-- Importamos los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css">
     <style>
         /* Estilos para la tabla */
         table {
@@ -30,47 +32,45 @@
     </style>
 </head>
 <body>
-    <h1>Obtener Mensajes</h1>
-    <div id="mensaje-table"></div>
+    <div class="container">
+        <h1 class="mt-50 text-center">Obtener Mensajes</h1>
+        <div id="mensaje-table"></div>
+    </div>
+    <!-- Importamos la librería de jQuery y los scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.min.js"></script>
     <script>
-        // Hacemos una petición GET al endpoint /obtener_mensajes
-        fetch('/obtener_mensajes')
-            .then(response => response.json())
-            .then(data => {
+        $(document).ready(() => {
+            // Hacemos una petición GET al endpoint /obtener_mensajes
+            $.getJSON('/obtener_mensajes', data => {
                 // Creamos la tabla y le asignamos los datos obtenidos
-                const table = document.createElement('table');
-                const thead = document.createElement('thead');
-                const trHead = document.createElement('tr');
-                const thId = document.createElement('th');
-                const thFecha = document.createElement('th');
-                const thMensaje = document.createElement('th');
-                thId.textContent = 'ID';
-                thFecha.textContent = 'Fecha';
-                thMensaje.textContent = 'Mensaje';
-                trHead.appendChild(thId);
-                trHead.appendChild(thFecha);
-                trHead.appendChild(thMensaje);
-                thead.appendChild(trHead);
-                table.appendChild(thead);
-                const tbody = document.createElement('tbody');
+                const table = $('<table>').addClass('table');
+                const thead = $('<thead>');
+                const trHead = $('<tr>');
+                const thId = $('<th>').text('ID');
+                const thFecha = $('<th>').text('Fecha');
+                const thMensaje = $('<th>').text('Mensaje');
+                trHead.append(thId);
+                trHead.append(thFecha);
+                trHead.append(thMensaje);
+                thead.append(trHead);
+                table.append(thead);
+                const tbody = $('<tbody>');
                 data.mensajes.forEach(mensaje => {
-                    const tr = document.createElement('tr');
-                    const tdId = document.createElement('td');
-                    const tdFecha = document.createElement('td');
-                    const tdMensaje = document.createElement('td');
-                    tdId.textContent = mensaje.id;
-                    tdFecha.textContent = mensaje.fecha;
-                    tdMensaje.textContent = mensaje.mensaje;
-                    tr.appendChild(tdId);
-                    tr.appendChild(tdFecha);
-                    tr.appendChild(tdMensaje);
-                    tbody.appendChild(tr);
+                    const tr = $('<tr>');
+                    const tdId = $('<td>').text(mensaje.id);
+                    const tdFecha = $('<td>').text(mensaje.fecha);
+                    const tdMensaje = $('<td>').text(mensaje.mensaje);
+                    tr.append(tdId);
+                    tr.append(tdFecha);
+                    tr.append(tdMensaje);
+                    tbody.append(tr);
                 });
-                table.appendChild(tbody);
-                document.getElementById('mensaje-table').appendChild(table);
+                table.append(tbody);
+                $('#mensaje-table').append(table);
             })
-            .catch(error => console.error(error));
+            .fail(error => console.error(error));
+        });
     </script>
 </body>
 </html>
-
