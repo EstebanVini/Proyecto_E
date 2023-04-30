@@ -4,7 +4,7 @@ import json
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from  utils.backend import guardar_datos, obtener_mensajes, obtener_mensaje_por_fecha_db, obtener_mensaje_por_id_db, buscar_mensajes_por_contenido_db, eliminar_mensaje_db
+from  utils.backend import guardar_datos, obtener_mensajes, obtener_mensaje_por_fecha_db, obtener_mensaje_por_id_db, buscar_mensajes_por_contenido_db, eliminar_mensaje_db, mensaje_aleatorio_db
 
 app = FastAPI()
 
@@ -65,6 +65,17 @@ async def eliminar_mensaje(id: int):
         return {"message": f"Se ha eliminado el mensaje con el ID {id}"}
     else:
         return {"message": "No se encontró ningún mensaje con ese ID."}
+
+@app.get("/mensaje_aleatorio")
+async def mensaje_aleratorio():
+    return FileResponse("vistas/mensaje_aleratorio.html")
+
+@app.get("/obtener_mensaje_aleratorio")
+async def obtener_mensaje_aleratorio():
+    mensaje = mensaje_aleatorio_db()
+    while not mensaje:
+        mensaje = mensaje_aleatorio_db()
+    return {"result": mensaje}
 
 
 if __name__ == "__main__":

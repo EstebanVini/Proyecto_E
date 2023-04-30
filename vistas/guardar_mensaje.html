@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Aplicación de Mensajes</title>
+<meta charset="UTF-8">
+<title>Aplicación de Mensajes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -92,33 +94,41 @@
 	</style>
 	</head>
 	<body>
-	<header>
-		<h1>Aplicación de Mensajes</h1>
-	</header>
-	<form>
-		<label for="mensaje">Escribir un mensaje:</label>
-		<input type="text" id="mensaje" name="mensaje">
-		<button type="button" onclick="guardarMensaje()">Guardar Mensaje</button>
-	</form>
-	<ul id="listaMensajes">
-	</ul>
-    <script>
-		async function guardarMensaje() {
-		  const mensaje = document.getElementById("mensaje").value;
-		  const options = {
-			method: 'POST',
-			headers: {
-			  'Content-Type': 'application/json',
-			  'Accept': 'application/json'
-			},
-			body: JSON.stringify({ mensaje: mensaje })
-		  };
-		  const response = await fetch('/guardar_mensaje', options);
-		  const data = await response.json();
-		  console.log(data.message);
-		  document.getElementById("mensaje").value = "";
-		  obtenerMensajes();
-		}
-	  </script>
-	</body>
+		<nav class="navbar navbar-dark bg-primary">
+		  <div class="container">
+			<span class="navbar-brand mb-0 h1">Aplicación de Mensajes</span>
+		  </div>
+		</nav>
+		<div class="container my-5">
+			<form>
+				<div class="form-group">
+				  <label for="mensaje">Escribir un mensaje:</label>
+				  <input type="text" class="form-control" id="mensaje" name="mensaje">
+				</div>
+				<button type="button" class="btn btn-primary" onclick="guardarMensaje()">Guardar Mensaje</button>
+				<p id="mensajeConfirmacion"></p>
+			  </form>			  
+		  <ul class="list-group my-3" id="listaMensajes">
+		  </ul>
+		</div>
+		<script>
+		  async function guardarMensaje() {
+			const mensaje = document.getElementById("mensaje").value;
+			const options = {
+				method: 'POST',
+				headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
+				},
+				body: JSON.stringify({ mensaje: mensaje })
+			};
+			const response = await fetch('/guardar_mensaje', options);
+			const data = await response.json();
+			console.log(data.message);
+			document.getElementById("mensaje").value = "";
+			document.getElementById("mensajeConfirmacion").textContent = "Mensaje guardado con éxito.";
+			obtenerMensajes();
+			}
+		</script>
+	  </body>	  
 	</html>

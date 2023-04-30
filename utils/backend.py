@@ -1,6 +1,7 @@
 import sqlite3
 import datetime
 import json
+import random
 
 def crear_BaseDatos ():
     # crear una conexión a la base de datos
@@ -117,7 +118,7 @@ def obtener_mensaje_por_id_db(id: int):
     if mensaje:
         return {'id': mensaje[0], 'fecha': mensaje[1], 'mensaje': mensaje[2]}
     else:
-        return None
+        return False
 
 
 # Función para buscar mensajes por su contenido
@@ -167,7 +168,6 @@ def eliminar_mensaje_db(id):
     try:
         cursor.execute(query)
     except sqlite3.Error as e:
-        print("Error al eliminar el registro:", e)
         return False
 
     # confirmar los cambios y cerrar la conexión a la base de datos
@@ -175,3 +175,30 @@ def eliminar_mensaje_db(id):
     conn.close()
 
     return True
+
+def mensaje_aleatorio_db():
+    # crear una conexión a la base de datos
+    conn = sqlite3.connect('mensajes.db')
+
+    # crear un cursor para ejecutar consultas SQL
+    cursor = conn.cursor()
+
+    # obtener el número total de mensajes
+    cursor.execute('SELECT COUNT(*) FROM mensajes')
+    total_mensajes = cursor.fetchone()[0]
+
+    # cerrar la conexión a la base de datos
+    conn.close()
+
+    # generar un número aleatorio entre 1 y el número total de mensajes
+    mensaje_id = random.randint(1, 1000)
+
+    # busca un mensaje con el ID aleatorio
+    mensaje = obtener_mensaje_por_id_db(mensaje_id)
+
+    # comprobar que el mensaje existe
+    if not mensaje:
+        return False
+    
+    else:
+        return mensaje
