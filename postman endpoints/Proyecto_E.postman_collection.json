@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "2bd3f2fa-575e-47b5-9fc8-7340fa0556b1",
+		"name": "Proyecto_E",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "guardar mensaje",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mensaje\": \"Hola desde un contenedor en la nube\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "67.205.138.108/guardar_mensaje",
+					"host": [
+						"67",
+						"205",
+						"138",
+						"108"
+					],
+					"path": [
+						"guardar_mensaje"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener todos los mensajes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "67.205.138.108/obtener_mensajes",
+					"host": [
+						"67",
+						"205",
+						"138",
+						"108"
+					],
+					"path": [
+						"obtener_mensajes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener por fecha",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"04/29\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "67.205.138.108/obtener_mensaje_por_fecha",
+					"host": [
+						"67",
+						"205",
+						"138",
+						"108"
+					],
+					"path": [
+						"obtener_mensaje_por_fecha"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "67.205.138.108/obtener_mensaje_por_id/16",
+					"host": [
+						"67",
+						"205",
+						"138",
+						"108"
+					],
+					"path": [
+						"obtener_mensaje_por_id",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por contenido",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contenido\": \"Hola\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "67.205.138.108/buscar_mensajes_por_contenido",
+					"host": [
+						"67",
+						"205",
+						"138",
+						"108"
+					],
+					"path": [
+						"buscar_mensajes_por_contenido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mensaje aleatorio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "67.205.138.108/obtener_mensaje_aleratorio",
+					"host": [
+						"67",
+						"205",
+						"138",
+						"108"
+					],
+					"path": [
+						"obtener_mensaje_aleratorio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar mensaje",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "67.205.138.108/eliminar_mensaje/14",
+					"host": [
+						"67",
+						"205",
+						"138",
+						"108"
+					],
+					"path": [
+						"eliminar_mensaje",
+						"14"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
