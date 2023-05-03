@@ -11,14 +11,14 @@ def crear_BaseDatos ():
     cursor = conn.cursor()
 
     # crear la tabla de mensajes con las columnas id, fecha y mensaje
-    cursor.execute('CREATE TABLE mensajes (id INTEGER PRIMARY KEY, fecha TEXT, mensaje TEXT)')
+    cursor.execute('CREATE TABLE mensajesElena (id INTEGER PRIMARY KEY, fecha TEXT, mensaje TEXT)')
 
     # confirmar los cambios y cerrar la conexión a la base de datos
     conn.commit()
     conn.close()
 
 
-def guardar_datos(mensaje: dict):
+def guardar_datos(mensaje: dict, tabla="mensajesElena"):
     mensaje = mensaje['mensaje']
     # crear una conexión a la base de datos
     conn = sqlite3.connect('mensajes.db')
@@ -30,7 +30,7 @@ def guardar_datos(mensaje: dict):
     fecha_actual = datetime.datetime.now().strftime("%m/%d")
 
     # insertar un mensaje en la tabla con un ID automático
-    cursor.execute('INSERT INTO mensajes (fecha, mensaje) VALUES (?, ?)', (fecha_actual, mensaje))
+    cursor.execute(f'INSERT INTO {tabla} (fecha, mensaje) VALUES (?, ?)', (fecha_actual, mensaje))
 
     # confirmar los cambios y cerrar la conexión a la base de datos
     conn.commit()
@@ -41,13 +41,13 @@ def guardar_datos(mensaje: dict):
     return mensaje_id
 
 
-def obtener_mensajes():
+def obtener_mensajes(tabla="mensajesElena"):
     # crear una conexión a la base de datos
     conn = sqlite3.connect('mensajes.db')
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
     # seleccionar todos los registros de la tabla
-    cursor.execute('SELECT * FROM mensajes')
+    cursor.execute(f'SELECT * FROM {tabla}')
     # obtener los resultados de la consulta
     resultados = cursor.fetchall()
     # crear una lista vacía para almacenar los mensajes
@@ -67,7 +67,7 @@ def obtener_mensajes():
 
 
 # Función para obtener un mensaje por fecha
-def obtener_mensaje_por_fecha_db(fecha: dict):
+def obtener_mensaje_por_fecha_db(fecha: dict, tabla="mensajesElena"):
     fecha = fecha['fecha']
     # crear una conexión a la base de datos
     conn = sqlite3.connect('mensajes.db')
@@ -76,7 +76,7 @@ def obtener_mensaje_por_fecha_db(fecha: dict):
     cursor = conn.cursor()
 
     # ejecutar la consulta SQL para obtener el mensaje por fecha
-    cursor.execute('SELECT * FROM mensajes WHERE fecha = ?', (fecha,))
+    cursor.execute(f'SELECT * FROM {tabla} WHERE fecha = ?', (fecha,))
 
     # obtener los resultados de la consulta
     mensajes = cursor.fetchall()
@@ -98,7 +98,7 @@ def obtener_mensaje_por_fecha_db(fecha: dict):
 
 
 # Función para obtener un mensaje por id
-def obtener_mensaje_por_id_db(id: int):
+def obtener_mensaje_por_id_db(id: int, tabla="mensajesElena"):
     # crear una conexión a la base de datos
     conn = sqlite3.connect('mensajes.db')
 
@@ -106,7 +106,7 @@ def obtener_mensaje_por_id_db(id: int):
     cursor = conn.cursor()
 
     # ejecutar la consulta SQL para obtener el mensaje por id
-    cursor.execute('SELECT * FROM mensajes WHERE id = ?', (id,))
+    cursor.execute(f'SELECT * FROM {tabla} WHERE id = ?', (id,))
 
     # obtener el resultado de la consulta
     mensaje = cursor.fetchone()
@@ -122,7 +122,7 @@ def obtener_mensaje_por_id_db(id: int):
 
 
 # Función para buscar mensajes por su contenido
-def buscar_mensajes_por_contenido_db(contenido: dict):
+def buscar_mensajes_por_contenido_db(contenido: dict, tabla="mensajesElena"):
     contenido = contenido['contenido']
     # crear una conexión a la base de datos
     conn = sqlite3.connect('mensajes.db')
@@ -131,7 +131,7 @@ def buscar_mensajes_por_contenido_db(contenido: dict):
     cursor = conn.cursor()
 
     # construir la consulta SQL para buscar mensajes por su contenido
-    consulta = f"SELECT * FROM mensajes WHERE mensaje LIKE '%{contenido}%'"
+    consulta = f"SELECT * FROM {tabla} WHERE mensaje LIKE '%{contenido}%'"
 
     # ejecutar la consulta SQL para buscar mensajes por su contenido
     cursor.execute(consulta)
@@ -154,7 +154,7 @@ def buscar_mensajes_por_contenido_db(contenido: dict):
     # retornar la lista de mensajes encontrados
     return mensajes_encontrados
 
-def eliminar_mensaje_db(id):
+def eliminar_mensaje_db(id, tabla="mensajesElena"):
     # crear una conexión a la base de datos
     conn = sqlite3.connect('mensajes.db')
 
@@ -162,7 +162,7 @@ def eliminar_mensaje_db(id):
     cursor = conn.cursor()
 
     # ejecutar la consulta SQL para eliminar el mensaje
-    query = f'DELETE FROM mensajes WHERE id = {id}'
+    query = f'DELETE FROM {tabla} WHERE id = {id}'
 
     # Ejecutar la consulta de eliminación
     try:
@@ -176,25 +176,13 @@ def eliminar_mensaje_db(id):
 
     return True
 
-def mensaje_aleatorio_db():
-    # crear una conexión a la base de datos
-    conn = sqlite3.connect('mensajes.db')
-
-    # crear un cursor para ejecutar consultas SQL
-    cursor = conn.cursor()
-
-    # obtener el número total de mensajes
-    cursor.execute('SELECT COUNT(*) FROM mensajes')
-    total_mensajes = cursor.fetchone()[0]
-
-    # cerrar la conexión a la base de datos
-    conn.close()
+def mensaje_aleatorio_db(tabla="mensajesElena"):
 
     # generar un número aleatorio entre 1 y el número total de mensajes
     mensaje_id = random.randint(1, 1000)
 
     # busca un mensaje con el ID aleatorio
-    mensaje = obtener_mensaje_por_id_db(mensaje_id)
+    mensaje = obtener_mensaje_por_id_db(mensaje_id, tabla)
 
     # comprobar que el mensaje existe
     if not mensaje:
@@ -202,3 +190,4 @@ def mensaje_aleatorio_db():
     
     else:
         return mensaje
+
