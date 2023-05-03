@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  mi_servicio:
+    image: app
+    restart: always
+
