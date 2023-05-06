@@ -58,6 +58,10 @@ async def buscar_mensajes_por_contenido(contenido: dict):
     else:
         return {"message": "No se encontraron mensajes con ese contenido."}
 
+@app.get("/eliminar_mensaje/Elena")
+async def eliminar():
+    return FileResponse("vistas/eliminar_mensajeElena.html")
+
 @app.delete("/eliminar_mensaje/{id}")
 async def eliminar_mensaje(id: int):
     if obtener_mensaje_por_id_db(id, tabla="mensajes"):
@@ -88,7 +92,7 @@ async def guardar_mensaje(mensaje: dict):
 
 @app.get("/todos/Elena")
 async def todos_los_mensajes():
-    return FileResponse("vistas/obtener_mensajes.html")
+    return FileResponse("vistas/obtener_mensajesElena.html")
 
 @app.get("/obtener_mensajes/Elena")
 async def obtener_todos_los_mensajes():
@@ -133,7 +137,7 @@ async def eliminar_mensaje(id: int):
 
 @app.get("/mensaje_aleatorio/Elena")
 async def mensaje_aleratorio():
-    return FileResponse("vistas/mensaje_aleratorio.html")
+    return FileResponse("vistas/mensaje_aleratorioElena.html")
 
 @app.get("/obtener_mensaje_aleratorio/Elena")
 async def obtener_mensaje_aleratorio():
@@ -144,6 +148,6 @@ async def obtener_mensaje_aleratorio():
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=80)
+    uvicorn.run(app, host="localhost", port=80)
 
 

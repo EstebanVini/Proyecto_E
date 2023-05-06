@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Obtener Mensaje Aleatorio</title>
+    <!-- Cargar Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            /* Fondo degradado */
+            background: linear-gradient(#008080, #FFFF00, #FF8C00, #FF0000);
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Estilos para el botón de refresco */
+        #refresh-button {
+            background-color: white;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            border: 5px solid #555;
+            font-size: 24px;
+            color: #555;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease-in-out;
+        }
+
+        #refresh-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid center">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="text-center">
+                <h1 id="mensaje"></h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cargar Bootstrap JS y FontAwesome para el icono de refresco -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNVQ8ew"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+<!-- Cargar JS personalizado para consumir el endpoint y actualizar el mensaje -->
+<script>
+  function obtenerMensaje() {
+      fetch("/obtener_mensaje_aleratorio/Elena")
+          .then(response => response.json())
+          .then(data => {
+              // Actualizar el contenido del mensaje
+              document.getElementById("mensaje").innerText = data.result.mensaje;
+          })
+          .catch(error => console.error(error));
+  }
+
+  // Obtener el mensaje al cargar la página
+  obtenerMensaje();
+
+</script>
+</body>
+</html>
+
+
+
+
+
