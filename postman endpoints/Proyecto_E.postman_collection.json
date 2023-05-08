@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mensaje\": \"Hola desde un contenedor en la nube\"\r\n}\r\n",
+					"raw": "{\r\n    \"mensaje\": \"\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,15 +20,39 @@
 					}
 				},
 				"url": {
-					"raw": "67.205.138.108/guardar_mensaje",
+					"raw": "{{host}}/guardar_mensaje",
 					"host": [
-						"67",
-						"205",
-						"138",
-						"108"
+						"{{host}}"
 					],
 					"path": [
 						"guardar_mensaje"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "guardar mensaje Elena",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mensaje\": \"Hola desde postman pero en la nube\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/guardar_mensaje/Elena",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"guardar_mensaje",
+						"Elena"
 					]
 				}
 			},
@@ -40,15 +64,30 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "67.205.138.108/obtener_mensajes",
+					"raw": "{{host}}/obtener_mensajes",
 					"host": [
-						"67",
-						"205",
-						"138",
-						"108"
+						"{{host}}"
 					],
 					"path": [
 						"obtener_mensajes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener todos los mensajes Elena",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/obtener_mensajes/Elena",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"obtener_mensajes",
+						"Elena"
 					]
 				}
 			},
@@ -64,7 +103,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"fecha\": \"04/29\"\r\n}",
+					"raw": "{\r\n    \"fecha\": \"05/01\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -72,15 +111,42 @@
 					}
 				},
 				"url": {
-					"raw": "67.205.138.108/obtener_mensaje_por_fecha",
+					"raw": "{{host}}/obtener_mensaje_por_fecha",
 					"host": [
-						"67",
-						"205",
-						"138",
-						"108"
+						"{{host}}"
 					],
 					"path": [
 						"obtener_mensaje_por_fecha"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener por fecha Elena",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"05/02\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/obtener_mensaje_por_fecha/Elena",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"obtener_mensaje_por_fecha",
+						"Elena"
 					]
 				}
 			},
@@ -92,16 +158,32 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "67.205.138.108/obtener_mensaje_por_id/16",
+					"raw": "{{host}}/obtener_mensaje_por_id/16",
 					"host": [
-						"67",
-						"205",
-						"138",
-						"108"
+						"{{host}}"
 					],
 					"path": [
 						"obtener_mensaje_por_id",
 						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener por id Elena",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/obtener_mensaje_por_id/Elena/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"obtener_mensaje_por_id",
+						"Elena",
+						"1"
 					]
 				}
 			},
@@ -125,15 +207,42 @@
 					}
 				},
 				"url": {
-					"raw": "67.205.138.108/buscar_mensajes_por_contenido",
+					"raw": "{{host}}/buscar_mensajes_por_contenido",
 					"host": [
-						"67",
-						"205",
-						"138",
-						"108"
+						"{{host}}"
 					],
 					"path": [
 						"buscar_mensajes_por_contenido"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por contenido Elena",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contenido\": \"Hola\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/buscar_mensajes_por_contenido/Elena",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"buscar_mensajes_por_contenido",
+						"Elena"
 					]
 				}
 			},
@@ -145,15 +254,30 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "67.205.138.108/obtener_mensaje_aleratorio",
+					"raw": "{{host}}/obtener_mensaje_aleratorio",
 					"host": [
-						"67",
-						"205",
-						"138",
-						"108"
+						"{{host}}"
 					],
 					"path": [
 						"obtener_mensaje_aleratorio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mensaje aleatorio Elena",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/obtener_mensaje_aleratorio/Elena",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"obtener_mensaje_aleratorio",
+						"Elena"
 					]
 				}
 			},
@@ -165,20 +289,42 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "67.205.138.108/eliminar_mensaje/14",
+					"raw": "{{host}}/eliminar_mensaje/24",
 					"host": [
-						"67",
-						"205",
-						"138",
-						"108"
+						"{{host}}"
 					],
 					"path": [
 						"eliminar_mensaje",
-						"14"
+						"24"
 					]
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Eliminar mensaje Elena",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/eliminar_mensaje/Elena/24",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"eliminar_mensaje",
+						"Elena",
+						"24"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "67.205.138.108"
 		}
 	]
 }
