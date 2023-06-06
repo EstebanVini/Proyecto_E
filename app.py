@@ -4,8 +4,7 @@ import json
 import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from  utils.backend import guardar_datos, obtener_mensajes, obtener_mensaje_por_fecha_db, obtener_mensaje_por_id_db, buscar_mensajes_por_contenido_db, eliminar_mensaje_db, mensaje_aleatorio_db
-
+from  utils.backend import *
 app = FastAPI()
 
 @app.get("/")
@@ -147,7 +146,22 @@ async def obtener_mensaje_aleratorio():
     return {"result": mensaje}
 
 
+
+#______________________________________PELICULAS____________________________________________________
+
+@app.get("/guardar_pelicula")
+async def guardar_pelicula_vista():
+    return FileResponse("vistas/guardar_pelicula.html")
+
+@app.post("/guardar_pelicula")
+async def guardar_pelicula_en_base(pelicula: dict):
+    pelicula_id = guardar_pelicula(pelicula)
+    return {"message": f"Se ha insertado una pelicula con el ID {pelicula_id}"}
+
+
+
+
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=80)
+    uvicorn.run(app, host="0.0.0.0", port=80)
 
 
