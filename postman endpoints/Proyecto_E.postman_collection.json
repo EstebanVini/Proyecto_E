@@ -6,319 +6,628 @@
 	},
 	"item": [
 		{
-			"name": "guardar mensaje",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"mensaje\": \"\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Mensajes",
+			"item": [
+				{
+					"name": "guardar mensaje",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mensaje\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/guardar_mensaje",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"guardar_mensaje"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}/guardar_mensaje",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"guardar_mensaje"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "guardar mensaje Elena",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"mensaje\": \"Hola desde postman pero en la nube\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "guardar mensaje Elena",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mensaje\": \"Hola desde postman pero en la nube\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/guardar_mensaje/Elena",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"guardar_mensaje",
+								"Elena"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}/guardar_mensaje/Elena",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"guardar_mensaje",
-						"Elena"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "obtener todos los mensajes",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/obtener_mensajes",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"obtener_mensajes"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "obtener todos los mensajes Elena",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/obtener_mensajes/Elena",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"obtener_mensajes",
-						"Elena"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "obtener por fecha",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"fecha\": \"05/01\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "obtener todos los mensajes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/obtener_mensajes",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_mensajes"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}/obtener_mensaje_por_fecha",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"obtener_mensaje_por_fecha"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "obtener por fecha Elena",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"fecha\": \"05/02\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "obtener todos los mensajes Elena",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/obtener_mensajes/Elena",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_mensajes",
+								"Elena"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}/obtener_mensaje_por_fecha/Elena",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"obtener_mensaje_por_fecha",
-						"Elena"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "obtener por id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/obtener_mensaje_por_id/16",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"obtener_mensaje_por_id",
-						"16"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "obtener por id Elena",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/obtener_mensaje_por_id/Elena/1",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"obtener_mensaje_por_id",
-						"Elena",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Buscar por contenido",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"contenido\": \"Hola\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "obtener por fecha",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha\": \"05/01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/obtener_mensaje_por_fecha",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_mensaje_por_fecha"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}/buscar_mensajes_por_contenido",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"buscar_mensajes_por_contenido"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Buscar por contenido Elena",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"contenido\": \"Hola\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "obtener por fecha Elena",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha\": \"05/02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/obtener_mensaje_por_fecha/Elena",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_mensaje_por_fecha",
+								"Elena"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}/buscar_mensajes_por_contenido/Elena",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"buscar_mensajes_por_contenido",
-						"Elena"
-					]
+				{
+					"name": "obtener por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/obtener_mensaje_por_id/16",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_mensaje_por_id",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtener por id Elena",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/obtener_mensaje_por_id/Elena/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_mensaje_por_id",
+								"Elena",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por contenido",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contenido\": \"Hola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/buscar_mensajes_por_contenido",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"buscar_mensajes_por_contenido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por contenido Elena",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contenido\": \"Hola\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/buscar_mensajes_por_contenido/Elena",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"buscar_mensajes_por_contenido",
+								"Elena"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mensaje aleatorio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/obtener_mensaje_aleratorio",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_mensaje_aleratorio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mensaje aleatorio Elena",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/obtener_mensaje_aleratorio/Elena",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_mensaje_aleratorio",
+								"Elena"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar mensaje",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/eliminar_mensaje/127",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"eliminar_mensaje",
+								"127"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar mensaje Elena",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/eliminar_mensaje/Elena/24",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"eliminar_mensaje",
+								"Elena",
+								"24"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "mensaje aleatorio",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/obtener_mensaje_aleratorio",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"obtener_mensaje_aleratorio"
-					]
+			"name": "Peliculas",
+			"item": [
+				{
+					"name": "Guardar Película",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Pelicula de prueba postman\",\r\n    \"genero\": \"Comedia\",\r\n    \"tipo\": \"Serie\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/guardar_pelicula",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"guardar_pelicula"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener pelicula por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/obtener_pelicula_por_id/203",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_pelicula_por_id",
+								"203"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todas las peliculas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/obtener_peliculas",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_peliculas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Película",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Jurassic Park\",\r\n    \"genero\": \"Fantasía\",\r\n    \"tipo\": \"Película\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/actualizar_pelicula/203",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"actualizar_pelicula",
+								"203"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Película por título",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/buscar_pelicula_por_titulo",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"buscar_pelicula_por_titulo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Películas por género",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"genero\": \"fantasía\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/buscar_peliculas_por_genero",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"buscar_peliculas_por_genero"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por género y tipo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"genero\": \"Fantasía\", \"tipo\": \"serie\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/buscar_peliculas_por_genero_y_tipo",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"buscar_peliculas_por_genero_y_tipo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Aleatoria por género y tipo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"genero\": \"Fantasía\", \"tipo\": \"Serie\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/obtener_aleatoria_por_genero_y_tipo",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_aleatoria_por_genero_y_tipo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Películas por tipo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tipo\": \"serie\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/buscar_peliculas_por_tipo",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"buscar_peliculas_por_tipo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Película o serie aleatoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/obtener_pelicula_o_serie_aleatoria",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_pelicula_o_serie_aleatoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pelicula o serie aleatoria por tipo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tipo\": \"serie\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/obtener_pelicula_o_serie_aleatoria_por_tipo",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"obtener_pelicula_o_serie_aleatoria_por_tipo"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		},
 		{
-			"name": "mensaje aleatorio Elena",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/obtener_mensaje_aleratorio/Elena",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"obtener_mensaje_aleratorio",
-						"Elena"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Eliminar mensaje",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/eliminar_mensaje/24",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"eliminar_mensaje",
-						"24"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Eliminar mensaje Elena",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/eliminar_mensaje/Elena/24",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"eliminar_mensaje",
-						"Elena",
-						"24"
-					]
-				}
-			},
-			"response": []
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"variable": [

@@ -3,6 +3,8 @@ import datetime
 import json
 import random
 
+#_______________________________________________MENSAJES_______________________________________________________
+
 def crear_BaseDatos ():
     # crear una conexión a la base de datos
     conn = sqlite3.connect('peliculas.db')
@@ -16,7 +18,6 @@ def crear_BaseDatos ():
     # confirmar los cambios y cerrar la conexión a la base de datos
     conn.commit()
     conn.close()
-
 
 def guardar_datos(mensaje: dict, tabla="mensajesElena"):
     mensaje = mensaje['mensaje']
@@ -39,7 +40,6 @@ def guardar_datos(mensaje: dict, tabla="mensajesElena"):
     mensaje_id = cursor.lastrowid
     print(f"Se ha insertado un mensaje con el ID {mensaje_id}")
     return mensaje_id
-
 
 def obtener_mensajes(tabla="mensajesElena"):
     # crear una conexión a la base de datos
@@ -65,8 +65,6 @@ def obtener_mensajes(tabla="mensajesElena"):
     # convertir la lista de mensajes a un objeto JSON y devolverlo
     return json.dumps(mensajes)
 
-
-# Función para obtener un mensaje por fecha
 def obtener_mensaje_por_fecha_db(fecha: dict, tabla="mensajesElena"):
     fecha = fecha['fecha']
     # crear una conexión a la base de datos
@@ -96,8 +94,6 @@ def obtener_mensaje_por_fecha_db(fecha: dict, tabla="mensajesElena"):
     # retornar la lista de mensajes encontrados
     return mensajes_encontrados
 
-
-# Función para obtener un mensaje por id
 def obtener_mensaje_por_id_db(id: int, tabla="mensajesElena"):
     # crear una conexión a la base de datos
     conn = sqlite3.connect('mensajes.db')
@@ -120,8 +116,6 @@ def obtener_mensaje_por_id_db(id: int, tabla="mensajesElena"):
     else:
         return False
 
-
-# Función para buscar mensajes por su contenido
 def buscar_mensajes_por_contenido_db(contenido: dict, tabla="mensajesElena"):
     contenido = contenido['contenido']
     # crear una conexión a la base de datos
@@ -177,22 +171,35 @@ def eliminar_mensaje_db(id, tabla="mensajesElena"):
     return True
 
 def mensaje_aleatorio_db(tabla="mensajesElena"):
+    try:
+        # crear una conexión a la base de datos
+        conn = sqlite3.connect('mensajes.db')
 
-    # generar un número aleatorio entre 1 y el número total de mensajes
-    mensaje_id = random.randint(1, 1000)
+        # crear un cursor para ejecutar consultas SQL
+        cursor = conn.cursor()
 
-    # busca un mensaje con el ID aleatorio
-    mensaje = obtener_mensaje_por_id_db(mensaje_id, tabla)
+        # ejecutar la consulta SQL para obtener el mensaje por fecha
+        cursor.execute(f'SELECT * FROM {tabla}')
 
-    # comprobar que el mensaje existe
-    if not mensaje:
+        # obtener los resultados de la consulta
+        mensajes = cursor.fetchall()
+
+        # cerrar la conexión a la base de datos
+        conn.close()
+
+        mensajes_encontrados = []
+        for mensaje in mensajes:
+            mensajes_encontrados.append({'id': mensaje[0], 'fecha': mensaje[1], 'mensaje': mensaje[2]})
+
+        mensajes_aleatorios = random.choice(mensajes_encontrados)
+
+        # retornar la lista de mensajes encontrados
+        return mensajes_aleatorios
+    except:
         return False
-    
-    else:
-        return mensaje
 
 
-# _______________________________________PELICULAS_______________________________________________________
+# _____________________________________________PELICULAS_______________________________________________________
 
 def guardar_pelicula(datos: dict):
 
@@ -317,7 +324,7 @@ def buscar_peliculas_por_nombre(datos: dict):
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
 
-    # construir la consulta SQL para buscar mensajes por su contenido
+    # construir la consulta SQL para buscar la película por su nombre, con que contenga una parte del nombre
     consulta = f"SELECT * FROM peliculas WHERE nombre LIKE '%{nombre}%'"
 
     # ejecutar la consulta SQL para buscar mensajes por su contenido
@@ -340,8 +347,6 @@ def buscar_peliculas_por_nombre(datos: dict):
 
     # retornar la lista de mensajes encontrados
     return peliculas_encontradas
-
-
 
 def buscar_peliculas_por_genero(datos: dict):
 
@@ -376,7 +381,6 @@ def buscar_peliculas_por_genero(datos: dict):
     # retornar la lista de mensajes encontrados
     return peliculas_encontradas
 
-
 def buscar_peliculas_por_tipo(datos: dict):
     
     tipo = datos['tipo']
@@ -409,7 +413,6 @@ def buscar_peliculas_por_tipo(datos: dict):
 
     # retornar la lista de mensajes encontrados
     return peliculas_encontradas
-
 
 def buscar_peliculas_por_genero_y_tipo(datos: dict):
         
@@ -480,7 +483,6 @@ def pelicula_aleatoria_por_genero_y_tipo(datos: dict):
 
     return pelicula_aleatoria
 
-
 def pelicula_o_serie_aleatoria():
 
     # crear una conexión a la base de datos
@@ -514,7 +516,6 @@ def pelicula_o_serie_aleatoria():
 
     # retornar la lista de mensajes encontrados
     return pelicula_aleatoria
-
 
 def pelicula_o_serie_aleatoria_por_genero(datos: dict):
         
@@ -552,46 +553,9 @@ def pelicula_o_serie_aleatoria_por_genero(datos: dict):
     # retornar la lista de mensajes encontrados
     return pelicula_aleatoria
 
-def pelicula_aleatoria():
-        
-    numero = random.randint(1, 1000)
-
-    # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
-
-    # crear un cursor para ejecutar consultas SQL
-    cursor = conn.cursor()
-
-    # construir la consulta SQL para buscar mensajes por su contenido
-    consulta = f"SELECT * FROM peliculas WHERE tipo = 'pelicula'"
-
-    # ejecutar la consulta SQL para buscar mensajes por su contenido
-    cursor.execute(consulta)
-
-    # obtener los resultados de la consulta
-    peliculas = cursor.fetchall()
-
-    # cerrar la conexión a la base de datos
-    conn.close()
-
-    # si no se encontraron mensajes, regresar None
-    if not peliculas:
-        return None
-
-    # crear una lista de diccionarios con los mensajes encontrados
-    peliculas_encontradas = []
-    for pelicula in peliculas:
-        peliculas_encontradas.append({'id': pelicula[0], 'nombre': pelicula[1], 'genero': pelicula[2], 'tipo': pelicula[3]})
-
-    pelicula_aleatoria = random.choice(peliculas_encontradas)
-
-    # retornar la lista de mensajes encontrados
-    return pelicula_aleatoria
-
-
-def serie_aleatoria():
+def pelicula_o_serie_aleatoria_por_tipo(datos: dict):
             
-    numero = random.randint(1, 1000)
+    tipo = datos['tipo']
 
     # crear una conexión a la base de datos
     conn = sqlite3.connect('peliculas.db')
@@ -600,7 +564,7 @@ def serie_aleatoria():
     cursor = conn.cursor()
 
     # construir la consulta SQL para buscar mensajes por su contenido
-    consulta = f"SELECT * FROM peliculas WHERE tipo = 'serie'"
+    consulta = f"SELECT * FROM peliculas WHERE tipo LIKE '%{tipo}%'"
 
     # ejecutar la consulta SQL para buscar mensajes por su contenido
     cursor.execute(consulta)
@@ -619,7 +583,7 @@ def serie_aleatoria():
     peliculas_encontradas = []
     for pelicula in peliculas:
         peliculas_encontradas.append({'id': pelicula[0], 'nombre': pelicula[1], 'genero': pelicula[2], 'tipo': pelicula[3]})
-
+    
     pelicula_aleatoria = random.choice(peliculas_encontradas)
 
     # retornar la lista de mensajes encontrados

@@ -158,8 +158,102 @@ async def guardar_pelicula_en_base(pelicula: dict):
     pelicula_id = guardar_pelicula(pelicula)
     return {"message": f"Se ha insertado una pelicula con el ID {pelicula_id}"}
 
+@app.get("/obtenerPeliculas")
+async def obtener_peliculas_vista():
+    return FileResponse("vistas/obtener_peliculas.html")
 
+@app.get("/obtener_peliculas")
+async def obtener_peliculasdb():
+    peliculas = obtener_peliculas()
+    return {"peliculas": json.loads(peliculas)}
 
+@app.get("/obtener_pelicula_por_id/{id}")
+async def obtener_pelicula_por_iddb(id: int):
+    pelicula = obtener_pelicula_por_id(id)
+    if pelicula:
+        return {"pelicula": pelicula}
+    else:
+        return {"message": "No se encontró ninguna pelicula con ese ID."}
+
+@app.delete("/eliminar_pelicula/{id}")
+async def eliminar_pelicula(id: int):
+    if obtener_pelicula_por_id(id):
+        eliminar_pelicula_db(id)
+        return {"message": f"Se ha eliminado la pelicula con el ID {id}"}
+    else:
+        return {"message": "No se encontró ninguna pelicula con ese ID."}
+
+@app.post("/actualizar_pelicula/{id}")
+async def actualizar_peliculadb(id: int, pelicula: dict):
+    if obtener_pelicula_por_id(id):
+        actualizar_pelicula(id, pelicula)
+        return {"message": f"Se ha actualizado la pelicula con el ID {id}"}
+    else:
+        return {"message": "No se encontró ninguna pelicula con ese ID."}
+
+@app.get("/buscarTeliculaPorTitulo")
+async def buscar_pelicula_por_titulo_vista():
+    return FileResponse("vistas/buscar_pelicula_por_titulo.html")
+
+@app.get("/buscar_pelicula_por_titulo")
+async def buscar_pelicula_por_titulodb(titulo: dict):
+    pelicula = buscar_peliculas_por_nombre(titulo)
+    if pelicula:
+        return {"pelicula": pelicula}
+    else:
+        return {"message": "No se encontró ninguna pelicula con ese titulo."}
+
+# @app.get("/buscar_peliculas_por_genero")
+# async def buscar_peliculas_por_genero_vista():
+#     return FileResponse("vistas/buscar_peliculas_por_genero.html")
+
+@app.get("/buscar_peliculas_por_genero")
+async def buscar_peliculas_por_generodb(genero: dict):
+    peliculas = buscar_peliculas_por_genero(genero)
+    if peliculas:
+        return {"peliculas": peliculas}
+    else:
+        return {"message": "No se encontraron peliculas con ese genero."}
+
+@app.get("/buscar_peliculas_por_tipo")
+async def buscar_peliculas_por_tipodb(tipo: dict):
+    peliculas = buscar_peliculas_por_tipo(tipo)
+    if peliculas:
+        return {"peliculas": peliculas}
+    else:
+        return {"message": "No se encontraron peliculas con ese tipo."}
+
+@app.get("/buscar_peliculas_por_genero_y_tipo")
+async def buscar_peliculas_por_generoytipodb(datos: dict):
+    peliculas = buscar_peliculas_por_genero_y_tipo(datos)
+    if peliculas:
+        return {"peliculas": peliculas}
+    else:
+        return {"message": "No se encontraron peliculas con ese genero o tipo."}
+
+@app.get("/obtener_aleatoria_por_genero_y_tipo")
+async def aleatoria_por_genero_y_tipodb(datos: dict):
+    pelicula = pelicula_aleatoria_por_genero_y_tipo(datos)
+    if pelicula:
+        return {"pelicula": pelicula}
+    else:
+        return {"message": "No se encontraron peliculas con ese genero o tipo."}
+
+@app.get("/obtener_pelicula_o_serie_aleatoria")
+async def pelicula_o_serie_aleatoriadb():
+    pelicula = pelicula_o_serie_aleatoria()
+    if pelicula:
+        return {"pelicula": pelicula}
+    else:
+        return {"message": "No se encontraron peliculas o series."}
+
+@app.get("/obtener_pelicula_o_serie_aleatoria_por_tipo")
+async def pelicula_o_serie_aleatoria_por_tipodb(tipo: dict):
+    pelicula = pelicula_o_serie_aleatoria_por_tipo(tipo)
+    if pelicula:
+        return {"pelicula": pelicula}
+    else:
+        return {"message": "No se encontraron peliculas o series con ese tipo."}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=80)
