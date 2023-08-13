@@ -149,18 +149,10 @@ async def obtener_mensaje_aleratorio():
 
 #______________________________________PELICULAS____________________________________________________
 
-@app.get("/guardar_pelicula")
-async def guardar_pelicula_vista():
-    return FileResponse("vistas/guardar_pelicula.html")
-
 @app.post("/guardar_pelicula")
 async def guardar_pelicula_en_base(pelicula: dict):
     pelicula_id = guardar_pelicula(pelicula)
     return {"message": f"Se ha insertado una pelicula con el ID {pelicula_id}"}
-
-@app.get("/obtenerPeliculas")
-async def obtener_peliculas_vista():
-    return FileResponse("vistas/obtener_peliculas.html")
 
 @app.get("/obtener_peliculas")
 async def obtener_peliculasdb():
@@ -176,9 +168,9 @@ async def obtener_pelicula_por_iddb(id: int):
         return {"message": "No se encontró ninguna pelicula con ese ID."}
 
 @app.delete("/eliminar_pelicula/{id}")
-async def eliminar_pelicula(id: int):
+async def eliminar_peliculadb(id: int):
     if obtener_pelicula_por_id(id):
-        eliminar_pelicula_db(id)
+        eliminar_pelicula(id)
         return {"message": f"Se ha eliminado la pelicula con el ID {id}"}
     else:
         return {"message": "No se encontró ninguna pelicula con ese ID."}
