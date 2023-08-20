@@ -292,13 +292,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/eliminar_mensaje/127",
+							"raw": "{{host}}/eliminar_mensaje/8",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"eliminar_mensaje",
-								"127"
+								"8"
 							]
 						}
 					},
@@ -310,14 +310,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/eliminar_mensaje/Elena/24",
+							"raw": "{{host}}/eliminar_mensaje/Elena/1",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"eliminar_mensaje",
 								"Elena",
-								"24"
+								"1"
 							]
 						}
 					},
@@ -335,7 +335,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Pelicula de prueba postman\",\r\n    \"genero\": \"Comedia\",\r\n    \"tipo\": \"Serie\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Pelicula de prueba postman áéíóó\",\r\n    \"genero\": \"Comedia\",\r\n    \"tipo\": \"Serie\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -360,13 +360,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/obtener_pelicula_por_id/203",
+							"raw": "{{host}}/obtener_pelicula_por_id/5",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"obtener_pelicula_por_id",
-								"203"
+								"5"
 							]
 						}
 					},
@@ -602,6 +602,90 @@
 							],
 							"path": [
 								"obtener_pelicula_o_serie_aleatoria_por_tipo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Película",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/eliminar_pelicula/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"eliminar_pelicula",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Crear usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Esteban\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/crear_usuario",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"crear_usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/inicio_sesion",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"inicio_sesion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/eliminar_usuario/Esteban",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"eliminar_usuario",
+								"Esteban"
 							]
 						}
 					},
