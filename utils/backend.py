@@ -2,6 +2,123 @@ import sqlite3
 import datetime
 import json
 import random
+import bcrypt
+
+#____________________________________________Usuarios_______________________________________________________
+
+
+def obtener_usuario_por_username(username: str):
+    # crear una conexión a la base de datos
+    conn = sqlite3.connect('users.db')
+
+    # crear un cursor para ejecutar consultas SQL
+    cursor = conn.cursor()
+
+    # ejecutar la consulta SQL para obtener el usuario por username
+    try:
+        cursor.execute('SELECT * FROM users WHERE username = ?', (username,))
+
+    except:
+        return False
+
+    usuario = cursor.fetchone()
+
+    # cerrar la conexión a la base de datos
+    conn.close()
+
+    # si se encontró el usuario, retornar verdadero y si no se encontró, retornar falso
+    if usuario:
+        return {'id': usuario[0], 'username': usuario[1], 'password': usuario[2], 'salt': usuario[3]}
+    
+    else:
+        return False
+
+def hash_password(password, salt=None):
+    pwd_bytes = password.encode("utf-8")
+    if salt is None:
+        salt = bcrypt.gensalt()
+    else:
+        salt = salt.encode("utf-8")
+    hashed_pwd = bcrypt.hashpw(pwd_bytes, salt)
+    return hashed_pwd.decode('utf-8'), salt.decode('utf-8')
+
+def crear_usuaio(data: dict):
+    username = data['username']
+    password = data['password']
+    hasd_password, salt = hash_password(password)
+
+
+
+    # crear una conexión a la base de datos
+    conn = sqlite3.connect('users.db')
+
+    # crear un cursor para ejecutar consultas SQL
+    cursor = conn.cursor()
+
+    # consultar si el usuario ya existe
+    if obtener_usuario_por_username(username):
+        return False
+    
+    # insertar un usuario en la tabla con un ID automático
+    cursor.execute('INSERT INTO users (username, password, salt) VALUES (?, ?, ?)', (username, hasd_password, salt))
+
+    # confirmar los cambios y cerrar la conexión a la base de datos
+    conn.commit()
+    conn.close()
+
+
+def login(data: dict):
+    username = data['username']
+    password = data['password']
+
+    # crear una conexión a la base de datos
+    conn = sqlite3.connect('users.db')
+
+    # crear un cursor para ejecutar consultas SQL
+    cursor = conn.cursor()
+
+    # consultar si el usuario ya existe
+    usuario = obtener_usuario_por_username(username)
+
+    # si el usuario no existe, retornar falso
+    if not usuario:
+        return False
+
+    # si el usuario existe, verificar si la contraseña es correcta
+    if bcrypt.hashpw(password.encode('utf-8'), usuario['salt']) == usuario['password']:
+        return True
+    else:
+        return False
+    
+
+def eliminar_usuario(data: str):
+    username = data['username']
+
+    # crear una conexión a la base de datos
+    conn = sqlite3.connect('users.db')
+
+    # crear un cursor para ejecutar consultas SQL
+    cursor = conn.cursor()
+
+    # consultar si el usuario ya existe
+    usuario = obtener_usuario_por_username(username)
+
+    # si el usuario no existe, retornar falso
+    if not usuario:
+        return False
+
+    # si el usuario existe, eliminarlo de la base de datos
+    cursor.execute('DELETE FROM users WHERE username = ?', (username,))
+
+    # confirmar los cambios y cerrar la conexión a la base de datos
+    conn.commit()
+    conn.close()
+
+    return True
+
+
+
+
 
 #_______________________________________________MENSAJES_______________________________________________________
 
@@ -588,4 +705,3 @@ def pelicula_o_serie_aleatoria_por_tipo(datos: dict):
 
     # retornar la lista de mensajes encontrados
     return pelicula_aleatoria
-

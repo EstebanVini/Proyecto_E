@@ -1,0 +1,676 @@
+{
+    "peliculas": [
+        {
+            "id": 1,
+            "nombre": "Friend ",
+            "genero": "Comedia",
+            "tipo": "Serie"
+        },
+        {
+            "id": 2,
+            "nombre": "La maldici\u00f3n de Hill House ",
+            "genero": "Suspenso",
+            "tipo": "Serie"
+        },
+        {
+            "id": 3,
+            "nombre": "Vaselina ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 4,
+            "nombre": "2521",
+            "genero": "Drama",
+            "tipo": "Serie"
+        },
+        {
+            "id": 5,
+            "nombre": "El stand de lo besos 1",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 6,
+            "nombre": "El stand de los besos 2",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 7,
+            "nombre": "El stand de los besos 3",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 8,
+            "nombre": "A todos los chicos de los que me enamor\u00e9 1",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 9,
+            "nombre": "A todos los chicos de los que me enamor\u00e9 2",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 10,
+            "nombre": "A todos los chicos de los que me enamor\u00e9 3",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 11,
+            "nombre": "Sweet Home ",
+            "genero": "Acci\u00f3n",
+            "tipo": "Serie"
+        },
+        {
+            "id": 12,
+            "nombre": "Una chica en apuros",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 13,
+            "nombre": "Host",
+            "genero": "Suspenso",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 14,
+            "nombre": "Que culpa tiene el Karma",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 15,
+            "nombre": "Purple heart ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 16,
+            "nombre": "Crep\u00fasculo 1",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 17,
+            "nombre": "Crep\u00fasculo 2",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 18,
+            "nombre": "Crep\u00fasculo 3",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 20,
+            "nombre": "Crep\u00fasculo 4",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 21,
+            "nombre": "Crep\u00fasculo 5",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 22,
+            "nombre": "Ni idea ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 23,
+            "nombre": "La propuesta ",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 24,
+            "nombre": "Una esposa de mentiras",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 25,
+            "nombre": "Chicas pesadas ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 26,
+            "nombre": "Your name ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 27,
+            "nombre": "About time ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 28,
+            "nombre": "Star Wars 1",
+            "genero": "Acci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 29,
+            "nombre": "Star Wars 2",
+            "genero": "Acci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 30,
+            "nombre": "Star Wars 3",
+            "genero": "Acci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 31,
+            "nombre": "Star Wars 4",
+            "genero": "Acci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 32,
+            "nombre": "Star Wars 5",
+            "genero": "Acci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 33,
+            "nombre": "Star Wars 6",
+            "genero": "Acci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 34,
+            "nombre": "Zootopia ",
+            "genero": "Animaci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 35,
+            "nombre": "Legalmente rubia",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 36,
+            "nombre": "Avatar la leyenda de Aang ",
+            "genero": "Aventura",
+            "tipo": "Serie"
+        },
+        {
+            "id": 38,
+            "nombre": "La chica salvaje ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 39,
+            "nombre": "Hannah Montana the movie ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 40,
+            "nombre": "The summer I turned pretty ",
+            "genero": "Romance",
+            "tipo": "Serie"
+        },
+        {
+            "id": 41,
+            "nombre": "Yo nunca ",
+            "genero": "Drama",
+            "tipo": "Serie"
+        },
+        {
+            "id": 42,
+            "nombre": "Clouds ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 43,
+            "nombre": "The Bing bang theory ",
+            "genero": "Comedia",
+            "tipo": "Serie"
+        },
+        {
+            "id": 44,
+            "nombre": "The holidays ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 45,
+            "nombre": "10 cosas que odio de ti ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 46,
+            "nombre": "Lilo & stitch",
+            "genero": "Animaci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 47,
+            "nombre": "Entre la vida y la muerte ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 48,
+            "nombre": "D\u00e9jate llevar ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 49,
+            "nombre": "Que esperar cuando est\u00e9s esperando ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 50,
+            "nombre": "Polaroid ",
+            "genero": "Suspenso",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 51,
+            "nombre": "Mi primer amor (Flipped)",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 52,
+            "nombre": "Hola, adi\u00f3s y todo lo que pas\u00f3 ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 53,
+            "nombre": "El gato en el sombrero ",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 54,
+            "nombre": "True Beauty ",
+            "genero": "Drama",
+            "tipo": "Serie"
+        },
+        {
+            "id": 55,
+            "nombre": "Son como ni\u00f1os ",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 56,
+            "nombre": "Pinocchio ",
+            "genero": "Animaci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 57,
+            "nombre": "Descendiente 1",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 58,
+            "nombre": "Descendiente 2",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 59,
+            "nombre": "Descendiente 3",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 60,
+            "nombre": "Teen beach movie 1",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 61,
+            "nombre": "Teen beach movie 2",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 62,
+            "nombre": "Zombies 1",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 63,
+            "nombre": "Zombies 2",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 64,
+            "nombre": "Zombies 3",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 65,
+            "nombre": "La nueva cenicienta ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 66,
+            "nombre": "Megamente ",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 67,
+            "nombre": "Dash & Lily",
+            "genero": "Romance",
+            "tipo": "Serie"
+        },
+        {
+            "id": 68,
+            "nombre": "El origen de los guardianes ",
+            "genero": "Animaci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 69,
+            "nombre": "Plus One ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 70,
+            "nombre": "Set it up ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 71,
+            "nombre": "Dance academy ",
+            "genero": "Drama",
+            "tipo": "Serie"
+        },
+        {
+            "id": 72,
+            "nombre": "Hachi ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 73,
+            "nombre": "500 d\u00edas con ella ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 74,
+            "nombre": "The son ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 75,
+            "nombre": "El diario Bridget Jones 1",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 76,
+            "nombre": "El diario Bridget Jones 2",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 77,
+            "nombre": "A man called Otto",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 78,
+            "nombre": "Stranger things ",
+            "genero": "Acci\u00f3n",
+            "tipo": "Serie"
+        },
+        {
+            "id": 79,
+            "nombre": "Nace una estrella ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 80,
+            "nombre": "Harry Potter 1",
+            "genero": "Fantas\u00eda",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 81,
+            "nombre": "Harry Potter 2",
+            "genero": "Fantas\u00eda",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 82,
+            "nombre": "Harry Potter 3",
+            "genero": "Fantas\u00eda",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 83,
+            "nombre": "Harry Potter 4",
+            "genero": "Fantas\u00eda",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 84,
+            "nombre": "Harry Potter 5",
+            "genero": "Fantas\u00eda",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 85,
+            "nombre": "Harry Potter 6",
+            "genero": "Fantas\u00eda",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 86,
+            "nombre": "Harry Potter 7",
+            "genero": "Fantas\u00eda",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 87,
+            "nombre": "Harry Potter 8",
+            "genero": "Fantas\u00eda",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 88,
+            "nombre": "El tiempo que te doy",
+            "genero": "Romance",
+            "tipo": "Serie"
+        },
+        {
+            "id": 89,
+            "nombre": "Amor a media noche",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 90,
+            "nombre": "C\u00f3mo si fuera la primera vez ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 91,
+            "nombre": "C\u00e1sese qui\u00e9n pueda ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 92,
+            "nombre": "The umbrella academy ",
+            "genero": "Acci\u00f3n",
+            "tipo": "Serie"
+        },
+        {
+            "id": 93,
+            "nombre": "Miraculous ",
+            "genero": "Animaci\u00f3n",
+            "tipo": "Serie"
+        },
+        {
+            "id": 95,
+            "nombre": "Todas contra John ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 96,
+            "nombre": "Se dice de mi ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 98,
+            "nombre": "Triunfos robados ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 99,
+            "nombre": "Cartas a Julieta ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 100,
+            "nombre": "El diario de una pasi\u00f3n ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 101,
+            "nombre": "Moxie",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 103,
+            "nombre": "Starstruck: mi novio es una super estrella ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 104,
+            "nombre": "Como perder a un hombre en 10 dias",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 105,
+            "nombre": "Camp rock ",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 107,
+            "nombre": "La teor\u00eda del todo ",
+            "genero": "Aventura",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 108,
+            "nombre": "Locura de amor en la Vegas ",
+            "genero": "Comedia",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 109,
+            "nombre": "Amor a segunda vista ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 110,
+            "nombre": "Una chica en apuros",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 111,
+            "nombre": "Si te casas te mato ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 112,
+            "nombre": "Mis 2 vidas ",
+            "genero": "Drama",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 113,
+            "nombre": "El ni\u00f1o, el topo, el zorro y el caballo ",
+            "genero": "Animaci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 114,
+            "nombre": "Violett & Finch",
+            "genero": "Fantas\u00eda",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 115,
+            "nombre": "One day",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 116,
+            "nombre": "Marat\u00f3n Barbie ",
+            "genero": "Animaci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 117,
+            "nombre": "Marly y yo ",
+            "genero": "Romance",
+            "tipo": "Pel\u00edcula"
+        },
+        {
+            "id": 118,
+            "nombre": "Elementos ",
+            "genero": "Animaci\u00f3n",
+            "tipo": "Pel\u00edcula"
+        }
+    ]
+}
