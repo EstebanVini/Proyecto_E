@@ -9,7 +9,34 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return FileResponse("vistas/index.html")
+    return {"message": "Running"}
+
+#____________________________________________Usuarios_______________________________________________________
+
+@app.post("/crear_usuario")
+async def guardar_usuario(usuario: dict):
+    if crear_usuaio(usuario):
+        return {"message": "Se ha creado el usuario exitosamente", "estado": True}
+    else:
+        return {"message": "No se ha podido crear el usuario", "estado": False}
+
+@app.post("/inicio_sesion")
+async def inicio_sesion(usuario: dict):
+    if login(usuario):
+        return {"message": "Inicio de sesión exitoso", "estado": True}
+    else:
+        return {"message": "No se ha podido iniciar sesión", "estado": False}
+
+@app.post("/eliminar_usuario/{username}")
+async def eliminar_usuario_db(username: str):
+    if eliminar_usuario(username):
+        return {"message": "Se ha eliminado el usuario exitosamente"}
+    else:
+        return {"message": "No se ha podido eliminar el usuario"}
+
+
+
+#____________________________________________Mensajes_______________________________________________________
 
 @app.post("/guardar_mensaje")
 async def guardar_mensaje(mensaje: dict):

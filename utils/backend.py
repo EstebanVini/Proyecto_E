@@ -42,12 +42,15 @@ def hash_password(password, salt=None):
     hashed_pwd = bcrypt.hashpw(pwd_bytes, salt)
     return hashed_pwd.decode('utf-8'), salt.decode('utf-8')
 
+def check_password(password, hashed_pwd, salt):
+    salt = salt.encode("utf-8")
+    pwd_bytes = password.encode("utf-8")
+    return bcrypt.hashpw(pwd_bytes, salt) == hashed_pwd.encode("utf-8")
+
 def crear_usuaio(data: dict):
     username = data['username']
     password = data['password']
     hasd_password, salt = hash_password(password)
-
-
 
     # crear una conexión a la base de datos
     conn = sqlite3.connect('users.db')
@@ -65,6 +68,8 @@ def crear_usuaio(data: dict):
     # confirmar los cambios y cerrar la conexión a la base de datos
     conn.commit()
     conn.close()
+
+    return True
 
 
 def login(data: dict):
@@ -85,14 +90,13 @@ def login(data: dict):
         return False
 
     # si el usuario existe, verificar si la contraseña es correcta
-    if bcrypt.hashpw(password.encode('utf-8'), usuario['salt']) == usuario['password']:
+    if check_password(password, usuario['password'], usuario['salt']):
         return True
     else:
         return False
     
 
-def eliminar_usuario(data: str):
-    username = data['username']
+def eliminar_usuario(username: str):
 
     # crear una conexión a la base de datos
     conn = sqlite3.connect('users.db')
