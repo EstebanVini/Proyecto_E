@@ -9,7 +9,7 @@ import bcrypt
 
 def obtener_usuario_por_username(username: str):
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('./data/users.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -53,7 +53,7 @@ def crear_usuaio(data: dict):
     hasd_password, salt = hash_password(password)
 
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('./data/users.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -77,7 +77,7 @@ def login(data: dict):
     password = data['password']
 
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('./data/users.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -99,7 +99,7 @@ def login(data: dict):
 def eliminar_usuario(username: str):
 
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect('./data/users.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -128,7 +128,7 @@ def eliminar_usuario(username: str):
 
 def crear_BaseDatos ():
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -143,7 +143,7 @@ def crear_BaseDatos ():
 def guardar_datos(mensaje: dict, tabla="mensajesElena"):
     mensaje = mensaje['mensaje']
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('mensajes.db')
+    conn = sqlite3.connect('./data/mensajes.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -164,7 +164,7 @@ def guardar_datos(mensaje: dict, tabla="mensajesElena"):
 
 def obtener_mensajes(tabla="mensajesElena"):
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('mensajes.db')
+    conn = sqlite3.connect('./data/mensajes.db')
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
     # seleccionar todos los registros de la tabla
@@ -189,7 +189,7 @@ def obtener_mensajes(tabla="mensajesElena"):
 def obtener_mensaje_por_fecha_db(fecha: dict, tabla="mensajesElena"):
     fecha = fecha['fecha']
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('mensajes.db')
+    conn = sqlite3.connect('./data/mensajes.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -217,7 +217,7 @@ def obtener_mensaje_por_fecha_db(fecha: dict, tabla="mensajesElena"):
 
 def obtener_mensaje_por_id_db(id: int, tabla="mensajesElena"):
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('mensajes.db')
+    conn = sqlite3.connect('./data/mensajes.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -240,7 +240,7 @@ def obtener_mensaje_por_id_db(id: int, tabla="mensajesElena"):
 def buscar_mensajes_por_contenido_db(contenido: dict, tabla="mensajesElena"):
     contenido = contenido['contenido']
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('mensajes.db')
+    conn = sqlite3.connect('./data/mensajes.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -271,7 +271,7 @@ def buscar_mensajes_por_contenido_db(contenido: dict, tabla="mensajesElena"):
 
 def eliminar_mensaje_db(id, tabla="mensajesElena"):
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('mensajes.db')
+    conn = sqlite3.connect('./data/mensajes.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -294,7 +294,7 @@ def eliminar_mensaje_db(id, tabla="mensajesElena"):
 def mensaje_aleatorio_db(tabla="mensajesElena"):
     try:
         # crear una conexión a la base de datos
-        conn = sqlite3.connect('mensajes.db')
+        conn = sqlite3.connect('./data/mensajes.db')
 
         # crear un cursor para ejecutar consultas SQL
         cursor = conn.cursor()
@@ -329,7 +329,7 @@ def guardar_pelicula(datos: dict):
     tipo = datos['tipo']
 
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -347,7 +347,7 @@ def guardar_pelicula(datos: dict):
 
 def obtener_peliculas():
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
     # seleccionar todos los registros de la tabla
@@ -372,7 +372,7 @@ def obtener_peliculas():
 
 def obtener_pelicula_por_id(id: int):
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -394,7 +394,7 @@ def obtener_pelicula_por_id(id: int):
 
 def eliminar_pelicula(id):
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -416,7 +416,7 @@ def eliminar_pelicula(id):
 
 def actualizar_pelicula(id, datos: dict):
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -440,7 +440,7 @@ def buscar_peliculas_por_nombre(datos: dict):
 
     nombre = datos['nombre']
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -473,7 +473,7 @@ def buscar_peliculas_por_genero(datos: dict):
 
     genero = datos['genero']
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -506,7 +506,7 @@ def buscar_peliculas_por_tipo(datos: dict):
     
     tipo = datos['tipo']
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -540,7 +540,7 @@ def buscar_peliculas_por_genero_y_tipo(datos: dict):
     genero = datos['genero']
     tipo = datos['tipo']
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -574,7 +574,7 @@ def pelicula_aleatoria_por_genero_y_tipo(datos: dict):
     genero = datos['genero']
     tipo = datos['tipo']
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -607,7 +607,7 @@ def pelicula_aleatoria_por_genero_y_tipo(datos: dict):
 def pelicula_o_serie_aleatoria():
 
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -643,7 +643,7 @@ def pelicula_o_serie_aleatoria_por_genero(datos: dict):
     genero = datos['genero']
 
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
@@ -679,7 +679,7 @@ def pelicula_o_serie_aleatoria_por_tipo(datos: dict):
     tipo = datos['tipo']
 
     # crear una conexión a la base de datos
-    conn = sqlite3.connect('peliculas.db')
+    conn = sqlite3.connect('./data/peliculas.db')
 
     # crear un cursor para ejecutar consultas SQL
     cursor = conn.cursor()
