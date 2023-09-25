@@ -27,7 +27,7 @@ async def inicio_sesion(usuario: dict):
     else:
         return {"message": "No se ha podido iniciar sesión", "estado": False}
 
-@app.post("/eliminar_usuario/{username}")
+@app.delete("/eliminar_usuario/{username}")
 async def eliminar_usuario_db(username: str):
     if eliminar_usuario(username):
         return {"message": "Se ha eliminado el usuario exitosamente"}
@@ -231,6 +231,6 @@ async def pelicula_o_serie_aleatoria_por_tipodb(tipo: dict):
         return {"message": "No se encontraron peliculas o series con ese tipo."}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=80)
+    uvicorn.run(app, port=2681)
 
 
