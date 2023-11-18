@@ -231,6 +231,8 @@ async def pelicula_o_serie_aleatoria_por_tipodb(tipo: dict):
         return {"message": "No se encontraron peliculas o series con ese tipo."}
 
 if __name__ == "__main__":
+
+
     uvicorn.run(app, host="0.0.0.0", port=8081)
 
 

@@ -7,7 +7,19 @@ import bcrypt
 
 #____________________________________________Usuarios_______________________________________________________
 
+def crear_BaseDatosusers():
+    # crear una conexión a la base de datos
+    conn = sqlite3.connect('./data/users.db')
 
+    # crear un cursor para ejecutar consultas SQL
+    cursor = conn.cursor()
+
+    # crear la tabla de usuarios con las columnas id, username, password y salt
+    cursor.execute('CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT, password TEXT, salt TEXT)')
+
+    # confirmar los cambios y cerrar la conexión a la base de datos
+    conn.commit()
+    conn.close()
 
 def obtener_usuario_por_username(username: str):
     # crear una conexión a la base de datos
@@ -127,6 +139,20 @@ def eliminar_usuario(username: str):
 
 
 #_______________________________________________MENSAJES_______________________________________________________
+
+def crear_BaseDatosMensajes():
+    # crear una conexión a la base de datos
+    conn = sqlite3.connect('./data/mensajes.db')
+
+    # crear un cursor para ejecutar consultas SQL
+    cursor = conn.cursor()
+
+    # crear la tabla de mensajes con las columnas id, fecha y mensaje
+    cursor.execute('CREATE TABLE mensajes (id INTEGER PRIMARY KEY, fecha TEXT, mensaje TEXT)')
+
+    # confirmar los cambios y cerrar la conexión a la base de datos
+    conn.commit()
+    conn.close()
 
 def crear_BaseDatos ():
     # crear una conexión a la base de datos
@@ -323,6 +349,20 @@ def mensaje_aleatorio_db(tabla="mensajesElena"):
 
 
 # _____________________________________________PELICULAS_______________________________________________________
+
+def crear_BaseDatosPeliculas():
+    # crear una conexión a la base de datos
+    conn = sqlite3.connect('./data/peliculas.db')
+
+    # crear un cursor para ejecutar consultas SQL
+    cursor = conn.cursor()
+
+    # crear la tabla de mensajes con las columnas id, fecha y mensaje
+    cursor.execute('CREATE TABLE peliculas (id INTEGER PRIMARY KEY, nombre TEXT, genero TEXT, tipo TEXT)')
+
+    # confirmar los cambios y cerrar la conexión a la base de datos
+    conn.commit()
+    conn.close()
 
 def guardar_pelicula(datos: dict):
 
