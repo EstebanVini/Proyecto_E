@@ -17,4 +17,4 @@ El servidor está desplegado en Digital Ocean en un Ubuntu server virtual (Pront
 
 Los endpoints del servidor están listados en el archivo de postman incluído en el proyecto
 
-Este proyecto se encuen
+Este proyecto se encuentra en constante desarrollo y puede que no se actualice en un rato
