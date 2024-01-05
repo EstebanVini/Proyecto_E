@@ -6,7 +6,7 @@ No es con fines de lucro ni con intenciones de ser publicado en ningún lugar.
 
 Consta de:
 
--Servidor (Este proyecto, desarrollado con python utilizando el framework FastApi. En forma de microservicios)
+-Servidor (Este proyecto, desarrollado con python utilizando el framework FastApi. utilizando una arquitecta de microservicios)
 
 -Cliente (Aplicación móvil en Flutter, desarrollada con Dart)
 
